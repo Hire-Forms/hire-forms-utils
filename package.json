@@ -1,0 +1,19 @@
+{
+  "name": "hire-forms-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hire-Forms/hire-forms-utils.git"
+  },
+  "author": "gijsjan.brouwer@huygens.knaw.nl (https://github.com/Gijsjan)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hire-Forms/hire-forms-utils/issues"
+  },
+  "homepage": "https://github.com/Hire-Forms/hire-forms-utils",
+  "peerDependencies": {
+    "react": "^0.13.3"
+  }
+}
