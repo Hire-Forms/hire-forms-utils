@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/Hire-Forms/hire-forms-utils/issues"
   },
-  "homepage": "https://github.com/Hire-Forms/hire-forms-utils"
+  "homepage": "https://github.com/Hire-Forms/hire-forms-utils",
+  "browserify": {
+    "transform": ["babelify"]
+  }
 }
