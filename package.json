@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel index.es6 --watch --plugins object-assign --out-file index.js"
+    "start": "babel src/index.js --watch --plugins object-assign --out-file build/index.js"
   },
   "repository": {
     "type": "git",
