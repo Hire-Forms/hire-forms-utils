@@ -2,7 +2,7 @@
   "name": "hire-forms-utils",
   "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "start": "babel src/index.js --watch --plugins object-assign --out-file build/index.js",
     "bump": "hi-bump"
