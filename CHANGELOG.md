@@ -1,3 +1,8 @@
+### v1.2.0	(2015/7/27 14:37)
+* Add description to describe
+* Add castKeyValue
+* Clean up
+
 ### v1.1.0	(2015/7/22 13:43)
 * Add tests
 
