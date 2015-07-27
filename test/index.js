@@ -16,7 +16,7 @@ describe("Hire Forms Utils", function() {
 		})
 	});
 
-	describe("castKeyValueMap", function() {
+	describe("castKeyValue - Always return a key/value map.", function() {
 		it("Should turn a primitive into a key/value map", function() {
 			should.deepEqual(castKeyValue("somestring"), {key: "somestring", value: "somestring"});
 			should.deepEqual(castKeyValue(1337), {key: 1337, value: 1337});
