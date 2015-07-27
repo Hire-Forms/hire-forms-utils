@@ -1,5 +1,5 @@
 import should from "should";
-import {isListOfStrings, isKeyValueMap, castArray, castKeyValueArray} from "../src";
+import {isListOfStrings, isKeyValueMap, castArray, castKeyValue, castKeyValueArray} from "../src";
 
 
 describe("Hire Forms Utils", function() {
@@ -14,6 +14,20 @@ describe("Hire Forms Utils", function() {
 			should.deepEqual(castArray([]), []);
 			should.deepEqual(castArray(["1", 2, true]), ["1", 2, true]);
 		})
+	});
+
+	describe("castKeyValueMap", function() {
+		it("Should turn a primitive into a key/value map", function() {
+			should.deepEqual(castKeyValue("somestring"), {key: "somestring", value: "somestring"});
+			should.deepEqual(castKeyValue(1337), {key: 1337, value: 1337});
+			should.deepEqual(castKeyValue(false), {key: false, value: false});
+		});
+
+		it("Should do nothing to a key/value map", function() {
+			should.deepEqual(castKeyValue({key: "somestring", value: "somestring"}), {key: "somestring", value: "somestring"});
+			should.deepEqual(castKeyValue({key: 1337, value: 1337}), {key: 1337, value: 1337});
+			should.deepEqual(castKeyValue({key: false, value: false}), {key: false, value: false});
+		});
 	});
 
 	describe("castKeyValueArray - Always return an array of key/value maps.", function() {

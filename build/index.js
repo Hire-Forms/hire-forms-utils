@@ -6,21 +6,22 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.isListOfStrings = isListOfStrings;
 exports.isKeyValueMap = isKeyValueMap;
 exports.castArray = castArray;
+exports.castKeyValue = castKeyValue;
 exports.castKeyValueArray = castKeyValueArray;
 
 function isListOfStrings(list) {
-	if (!Array.isArray(list) || !list.length) {
-		return false;
-	}
+  if (!Array.isArray(list) || !list.length) {
+    return false;
+  }
 
-	return list.every(function (item) {
-		return typeof item === "string";
-	});
+  return list.every(function (item) {
+    return typeof item === "string";
+  });
 }
 
 /*
@@ -29,11 +30,11 @@ function isListOfStrings(list) {
  */
 
 function isKeyValueMap(map) {
-	if (map == null) {
-		return false;
-	}
+  if (map == null) {
+    return false;
+  }
 
-	return map.hasOwnProperty("key") && map.hasOwnProperty("value");
+  return map.hasOwnProperty("key") && map.hasOwnProperty("value");
 }
 
 /*
@@ -44,25 +45,34 @@ function isKeyValueMap(map) {
  */
 
 function castArray(arr) {
-	return Array.isArray(arr) ? arr : [arr];
+  return Array.isArray(arr) ? arr : [arr];
 }
 
 ;
 
 /*
+ * Always return a key/value map.
+ *
+ * @param {Number|String|Boolean|Object} item
+ * @returns {Array} Array of key value maps, ie: [{key: "A", value: "A"}, {key: "B", value: "B"}, ...]
+ */
+
+function castKeyValue(item) {
+  return isKeyValueMap(item) ? item : {
+    key: item,
+    value: item
+  };
+}
+
+/*
  * Always return an array of key/value maps.
  *
- * @param {Number|String|Boolean|Array} list
+ * @param {Number|String|Boolean|Array|Object} list
  * @returns {Array} Array of key value maps, ie: [{key: "A", value: "A"}, {key: "B", value: "B"}, ...]
  */
 
 function castKeyValueArray(list) {
-	list = castArray(list);
+  list = castArray(list);
 
-	return list.map(function (item) {
-		return isKeyValueMap(item) ? item : {
-			key: item,
-			value: item
-		};
-	});
+  return list.map(castKeyValue);
 }

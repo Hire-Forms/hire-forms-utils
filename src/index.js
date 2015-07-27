@@ -36,20 +36,28 @@ export function castArray(arr) {
 };
 
 /*
+ * Always return a key/value map.
+ *
+ * @param {Number|String|Boolean|Object} item
+ * @returns {Array} Array of key value maps, ie: [{key: "A", value: "A"}, {key: "B", value: "B"}, ...]
+ */
+export function castKeyValue(item) {
+	return isKeyValueMap(item) ?
+		item :
+		{
+			key: item,
+			value: item
+		};
+}
+
+/*
  * Always return an array of key/value maps.
  *
- * @param {Number|String|Boolean|Array} list
+ * @param {Number|String|Boolean|Array|Object} list
  * @returns {Array} Array of key value maps, ie: [{key: "A", value: "A"}, {key: "B", value: "B"}, ...]
  */
 export function castKeyValueArray(list) {
 	list = castArray(list);
 
-	return list.map((item) => {
-		return isKeyValueMap(item) ?
-			item :
-			{
-				key: item,
-				value: item
-			};
-	});
+	return list.map(castKeyValue);
 }
